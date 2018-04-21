@@ -1,0 +1,629 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n## Flowchart",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eFlowchart\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414931_981604753",
+      "id": "20180418-094729_805661210",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nThe following chart shows how the data flows in the Inception v3 model, which is a Convolutional Neural Network with many layers and a complicated structure. The [research paper](http://arxiv.org/pdf/1512.00567v3.pdf) gives more details on how the Inception model is constructed and why it is designed that way. But the authors admit that they don\u0027t fully understand why it works.\n\nNote that the Inception model has two softmax-outputs. One is used during training of the neural network and the other is used for classifying images after training has finished, also known as inference.\n\n[Newer models](https://research.googleblog.com/2016/08/improving-inception-and-image.html) became available just last week, which are even more complicated than Inception v3 and achieve somewhat better classification accuracy.\n\n![](https://raw.githubusercontent.com/Hvass-Labs/TensorFlow-Tutorials/master/images/07_inception_flowchart.png)\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThe following chart shows how the data flows in the Inception v3 model, which is a Convolutional Neural Network with many layers and a complicated structure. The \u003ca href\u003d\"http://arxiv.org/pdf/1512.00567v3.pdf\"\u003eresearch paper\u003c/a\u003e gives more details on how the Inception model is constructed and why it is designed that way. But the authors admit that they don\u0026rsquo;t fully understand why it works.\u003c/p\u003e\n\u003cp\u003eNote that the Inception model has two softmax-outputs. One is used during training of the neural network and the other is used for classifying images after training has finished, also known as inference.\u003c/p\u003e\n\u003cp\u003e\u003ca href\u003d\"https://research.googleblog.com/2016/08/improving-inception-and-image.html\"\u003eNewer models\u003c/a\u003e became available just last week, which are even more complicated than Inception v3 and achieve somewhat better classification accuracy.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/Hvass-Labs/TensorFlow-Tutorials/master/images/07_inception_flowchart.png\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414932_979681009",
+      "id": "20180418-094800_1129406035",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Using the model without training the network",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eUsing the model without training the network\u003c/h1\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414932_979681009",
+      "id": "20180418-110508_255147262",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\nwget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/imagenet/classify_image.py -P /notebook/tensorflow-for-poets-2/scripts/\n\nmkdir /notebook/tensorflow-for-poets-2/webimages\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:01:30 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Connecting to raw.githubusercontent.com (151.101.12.133:443)\nclassify_image.py    100% |*******************************|  7744   0:00:00 ETA\n\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524059900150_902389458",
+      "id": "20180418-135820_934771734",
+      "dateCreated": "Apr 18, 2018 1:58:20 PM",
+      "dateStarted": "Apr 18, 2018 2:01:19 PM",
+      "dateFinished": "Apr 18, 2018 2:01:19 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n![sports car](http://szzljy.com/images/car/car2.jpg)",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"http://szzljy.com/images/car/car2.jpg\" alt\u003d\"sports car\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414932_979681009",
+      "id": "20180418-110448_1422548311",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\nwget http://szzljy.com/images/car/car2.jpg -P /notebook/tensorflow-for-poets-2/webimages/\n\npython /notebook/tensorflow-for-poets-2/scripts/classify_image.py  --image_file /notebook/tensorflow-for-poets-2/webimages/car2.jpg\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:02:04 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {
+          "url": ""
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Connecting to szzljy.com (88.99.219.223:80)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/webimages/car2.jpg\u0027: File exists\n2018-04-18 14:02:16.919522: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-18 14:02:17.450707: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\nsports car, sport car (score \u003d 0.51879)\ngrille, radiator grille (score \u003d 0.12472)\ncar wheel (score \u003d 0.11999)\nconvertible (score \u003d 0.04073)\nbeach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon (score \u003d 0.02115)\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414933_979296260",
+      "id": "20180418-110000_1265852635",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "dateStarted": "Apr 18, 2018 2:02:05 PM",
+      "dateFinished": "Apr 18, 2018 2:02:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n![ocean liner](https://amp.thisisinsider.com/images/5a996be98d60262b008b457d-750-500.jpg)\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://amp.thisisinsider.com/images/5a996be98d60262b008b457d-750-500.jpg\" alt\u003d\"ocean liner\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414933_979296260",
+      "id": "20180418-110828_1488526419",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\nwget http://www.vitoriasc.pt/public/images/sys_images/1271442932596.jpg -P /notebook/tensorflow-for-poets-2/webimages/\n\npython /notebook/tensorflow-for-poets-2/scripts/classify_image.py  --image_file /notebook/tensorflow-for-poets-2/webimages/1271442932596.jpg\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 5:36:21 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Connecting to www.vitoriasc.pt (37.187.139.72:80)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/webimages/1271442932596.jpg\u0027: File exists\n2018-04-18 17:36:27.933696: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-18 17:36:28.698962: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\ndam, dike, dyke (score \u003d 0.16474)\nbobsled, bobsleigh, bob (score \u003d 0.10890)\nradio telescope, radio reflector (score \u003d 0.05140)\nmaze, labyrinth (score \u003d 0.02783)\nplanetarium (score \u003d 0.02535)\n  from ._conv import register_converters as _register_converters\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414933_979296260",
+      "id": "20180418-110908_1590731246",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "dateStarted": "Apr 18, 2018 5:36:21 PM",
+      "dateFinished": "Apr 18, 2018 5:36:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## (Re)training the network\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003e(Re)training the network\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414934_980450507",
+      "id": "20180418-103413_1830102090",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\npython -m scripts.retrain \\\n  --bottleneck_dir\u003dtf_files/bottlenecks \\\n  --how_many_training_steps\u003d500 \\\n  --model_dir\u003dtf_files/models/ \\\n  --summaries_dir\u003dtf_files/training_summaries/mobilenet_0.50_224 \\\n  --output_graph\u003dtf_files/retrained_graph.pb \\\n  --output_labels\u003dtf_files/retrained_labels.txt \\\n  --architecture\u003d\"mobilenet_0.50_224\" \\\n  --image_dir\u003dtf_files/flower_photos\n\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {
+          "IMAGE_SIZE": "",
+          "ARCHITECTURE": ""
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "INCOMPLETE",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\nINFO:tensorflow:Looking for images in \u0027daisy\u0027\nINFO:tensorflow:Looking for images in \u0027dandelion\u0027\nINFO:tensorflow:Looking for images in \u0027roses\u0027\nINFO:tensorflow:Looking for images in \u0027sunflowers\u0027\nINFO:tensorflow:Looking for images in \u0027tulips\u0027\n2018-04-18 11:11:17.944665: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2\nINFO:tensorflow:100 bottleneck files created.\nINFO:tensorflow:200 bottleneck files created.\nINFO:tensorflow:300 bottleneck files created.\nINFO:tensorflow:400 bottleneck files created.\nINFO:tensorflow:500 bottleneck files created.\nINFO:tensorflow:600 bottleneck files created.\nINFO:tensorflow:700 bottleneck files created.\nINFO:tensorflow:800 bottleneck files created.\nINFO:tensorflow:900 bottleneck files created.\nINFO:tensorflow:1000 bottleneck files created.\nINFO:tensorflow:1100 bottleneck files created.\nINFO:tensorflow:1200 bottleneck files created.\nINFO:tensorflow:1300 bottleneck files created.\nINFO:tensorflow:1400 bottleneck files created.\nINFO:tensorflow:1500 bottleneck files created.\nINFO:tensorflow:1600 bottleneck files created.\nINFO:tensorflow:1700 bottleneck files created.\nINFO:tensorflow:1800 bottleneck files created.\nINFO:tensorflow:1900 bottleneck files created.\nINFO:tensorflow:2000 bottleneck files created.\nINFO:tensorflow:2100 bottleneck files created.\nINFO:tensorflow:2200 bottleneck files created.\nINFO:tensorflow:2300 bottleneck files created.\nINFO:tensorflow:2400 bottleneck files created.\nINFO:tensorflow:2500 bottleneck files created.\nINFO:tensorflow:2600 bottleneck files created.\nINFO:tensorflow:2700 bottleneck files created.\nINFO:tensorflow:2800 bottleneck files created.\nINFO:tensorflow:2900 bottleneck files created.\nINFO:tensorflow:3000 bottleneck files created.\nINFO:tensorflow:3100 bottleneck files created.\nINFO:tensorflow:3200 bottleneck files created.\nINFO:tensorflow:3300 bottleneck files created.\nINFO:tensorflow:3400 bottleneck files created.\nINFO:tensorflow:3500 bottleneck files created.\nINFO:tensorflow:3600 bottleneck files created.\nWARNING:tensorflow:From /notebook/tensorflow-for-poets-2/scripts/retrain.py:790: softmax_cross_entropy_with_logits (from tensorflow.python.ops.nn_ops) is deprecated and will be removed in a future version.\nInstructions for updating:\n\nFuture major versions of TensorFlow will allow gradients to flow\ninto the labels input on backprop by default.\n\nSee tf.nn.softmax_cross_entropy_with_logits_v2.\n\nINFO:tensorflow:2018-04-18 11:11:58.961108: Step 0: Train accuracy \u003d 34.0%\nINFO:tensorflow:2018-04-18 11:11:58.964102: Step 0: Cross entropy \u003d 3.088640\nINFO:tensorflow:2018-04-18 11:11:59.438588: Step 0: Validation accuracy \u003d 27.0% (N\u003d100)\nINFO:tensorflow:2018-04-18 11:12:02.347526: Step 10: Train accuracy \u003d 80.0%\nINFO:tensorflow:2018-04-18 11:12:02.348828: Step 10: Cross entropy \u003d 0.569811\nINFO:tensorflow:2018-04-18 11:12:02.636258: Step 10: Validation accuracy \u003d 76.0% (N\u003d100)\nINFO:tensorflow:2018-04-18 11:12:05.884369: Step 20: Train accuracy \u003d 82.0%\nINFO:tensorflow:2018-04-18 11:12:05.890387: Step 20: Cross entropy \u003d 0.470492\nINFO:tensorflow:2018-04-18 11:12:06.183905: Step 20: Validation accuracy \u003d 82.0% (N\u003d100)\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Paragraph received a SIGTERM\nExitValue: 143"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414935_980065758",
+      "id": "20180418-103411_864460186",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n\n![daisy](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/img/3021186b83bc90c2.png)\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/img/3021186b83bc90c2.png\" alt\u003d\"daisy\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414935_980065758",
+      "id": "20180418-111255_1214943718",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\nls /notebook/tensorflow-for-poets-2/tf_files/flower_photos\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 5:37:45 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        },
+        "editorMode": "ace/mode/sh"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "LICENSE.txt\ndaisy\ndandelion\nroses\nsunflowers\ntulips\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524073044512_152865113",
+      "id": "20180418-173724_2050433334",
+      "dateCreated": "Apr 18, 2018 5:37:24 PM",
+      "dateStarted": "Apr 18, 2018 5:37:45 PM",
+      "dateFinished": "Apr 18, 2018 5:37:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\npython -m scripts.label_image \\\n    --graph\u003dtf_files/retrained_graph.pb  \\\n    --image\u003dtf_files/flower_photos/daisy/21652746_cc379e0eea_m.jpg",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:03:06 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2018-04-18 14:03:09.305649: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\nEvaluation time (1-image):\n 0.224s\n\ndaisy 0.984136\ndandelion 0.01281971\nsunflowers 0.0030391181\nroses 3.4951956e-06\ntulips 1.6363009e-06\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414935_980065758",
+      "id": "20180418-103346_1551228877",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "dateStarted": "Apr 18, 2018 2:03:06 PM",
+      "dateFinished": "Apr 18, 2018 2:03:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n![roses](https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/img/28cf1a230dc7c51f.png)\n",
+      "dateUpdated": "Apr 18, 2018 1:16:54 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://codelabs.developers.google.com/codelabs/tensorflow-for-poets/img/28cf1a230dc7c51f.png\" alt\u003d\"roses\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414936_978142013",
+      "id": "20180418-111221_2010282757",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "status": "READY",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\npython -m scripts.label_image \\\n    --graph\u003dtf_files/retrained_graph.pb  \\\n    --image\u003dtf_files/flower_photos/roses/2414954629_3708a1a04d.jpg \n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:03:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "2018-04-18 14:03:15.945875: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  fro\nEvaluation time (1-image): 0.173s\n\nroses 0.9756841\ntulips 0.02419831\ndandelion 8.0699814e-05\nsunflowers 2.685581e-05\ndaisy 9.996674e-06\nm ._conv import register_converters as _register_converters\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414936_978142013",
+      "id": "20180418-111339_313413550",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "dateStarted": "Apr 18, 2018 2:03:12 PM",
+      "dateFinished": "Apr 18, 2018 2:03:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\nwget http://static1.squarespace.com/static/53ceb7e3e4b0881d48c08930/572350aa60b5e97577d4db91/57eadf50414fb577177ca54b/1521767286067/roses.jpeg -P /notebook/tensorflow-for-poets-2/webimages/\n\npython -m scripts.label_image \\\n    --graph\u003dtf_files/retrained_graph.pb  \\\n    --image\u003dwebimages/roses.jpeg",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:06:38 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Connecting to static1.squarespace.com (151.101.12.238:80)\nroses.jpeg           100% |*******************************|   253k  0:00:00 ETA\n\n2018-04-18 14:06:42.429966: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\n\nEvaluation time (1-image): 0.173s\n\nroses 0.99909043\ntulips 0.0009086763\nsunflowers 8.935977e-07\ndaisy 5.9233973e-10\ndandelion 1.5410986e-10\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524057414936_978142013",
+      "id": "20180418-114624_1571789424",
+      "dateCreated": "Apr 18, 2018 1:16:54 PM",
+      "dateStarted": "Apr 18, 2018 2:06:38 PM",
+      "dateFinished": "Apr 18, 2018 2:06:42 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 2:04:44 PM",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1524060284698_-1002136734",
+      "id": "20180418-140444_1651157053",
+      "dateCreated": "Apr 18, 2018 2:04:44 PM",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "10. Inception Model and Transfer Learning",
+  "id": "2DDYE6YV2",
+  "angularObjects": {
+    "2DCH5NE18:shared_process": [],
+    "2DDUY1CP1:shared_process": [],
+    "2DBBE2K4K:shared_process": [],
+    "2DDR1CC6Q:shared_process": [],
+    "2DASJS5DN:shared_process": [],
+    "2DE1ZQCFB:shared_process": [],
+    "2DDNXUQG4:shared_process": [],
+    "2DCN5KT6R:shared_process": [],
+    "2DDTBF2CG:shared_process": [],
+    "2DE2DP1DT:shared_process": [],
+    "2DAJ8J9YW:shared_process": [],
+    "2DBD18PNB:shared_process": [],
+    "2DD3CD9SC:shared_process": [],
+    "2DBWM4JYG:shared_process": [],
+    "2DASXR4B2:shared_process": [],
+    "2DAW1GDN1:shared_process": [],
+    "2DC2T9PZP:shared_process": [],
+    "2DCFA21BA:shared_process": [],
+    "2DDBAAYEJ:shared_process": [],
+    "2DBGYQD2G:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}

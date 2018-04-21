@@ -1,0 +1,1384 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md\n# 1-layer neural network\n\nThis document serves as notes on the Deep Learning Without a PhD\n\n[CodeLab](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/)\n\nThis notebook covers the \"first\" example, of trying to classify MNIST digits using just a weighted sum of pixel values with a softmax. \n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:21 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003e1-layer neural network\u003c/h1\u003e\n\u003cp\u003eThis document serves as notes on the Deep Learning Without a PhD\u003c/p\u003e\n\u003cp\u003e\u003ca href\u003d\"https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/\"\u003eCodeLab\u003c/a\u003e\u003c/p\u003e\n\u003cp\u003eThis notebook covers the \u0026ldquo;first\u0026rdquo; example, of trying to classify MNIST digits using just a weighted sum of pixel values with a softmax.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731998_1813061927",
+      "id": "20180417-233709_35149444",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nimport tensorflow as tf\nfrom tensorflow.examples.tutorials.mnist import input_data as mnist_data\n\nimport matplotlib.pyplot as plt\n\nimport seaborn as sns\nsns.set()",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731998_1813061927",
+      "id": "20180417-225503_84855985",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Load Data",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eLoad Data\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225534_2007528097",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n# Download images and labels into mnist.test (10K images+labels) and mnist.train (60K images+labels)\nmnist \u003d mnist_data.read_data_sets(\"data\", one_hot\u003dTrue, reshape\u003dFalse, validation_size\u003d0)",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Extracting data/train-images-idx3-ubyte.gz\nExtracting data/train-labels-idx1-ubyte.gz\nExtracting data/t10k-images-idx3-ubyte.gz\nExtracting data/t10k-labels-idx1-ubyte.gz\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225633_879476504",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Setup Model\n\nLets first make a simple soft-max classification of MNIST digits.\n\n![](https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/model.png)\n\nTake each `28 x 28` image, flatten into a `784` vector, and have that fully connected to a 10-node softmax layer which will serve as our classifier. \n\nLets define all our sizes up front for clarity",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003eSetup Model\u003c/h2\u003e\n\u003cp\u003eLets first make a simple soft-max classification of MNIST digits.\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/model.png\" /\u003e\u003c/p\u003e\n\u003cp\u003eTake each \u003ccode\u003e28 x 28\u003c/code\u003e image, flatten into a \u003ccode\u003e784\u003c/code\u003e vector, and have that fully connected to a 10-node softmax layer which will serve as our classifier. \u003c/p\u003e\n\u003cp\u003eLets define all our sizes up front for clarity\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225637_152774084",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nbatchSize \u003d None;       # put None for right now as we dont know yet\nimgHeight \u003d 28\nimgWidth \u003d 28\nnumOfColors \u003d 1         # gray scale images\nflatSize \u003d imgHeight*imgWidth*numOfColors   # 728\nnumberOfClasses \u003d 10    # 10 classes: 0-9",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225800_2009473288",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow we can define our variables. Lets begin with our our input images: `X_img`:",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we can define our variables. Lets begin with our our input images: \u003ccode\u003eX_img\u003c/code\u003e:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225817_535965591",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:22 PM",
+      "dateFinished": "Apr 18, 2018 1:57:22 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n# Input Data\nX_img \u003d tf.placeholder(tf.float32, [batchSize, imgHeight, imgWidth, numOfColors], name\u003d\"X_img\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:22 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225839_156021450",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nThis is a tensor, where we can image a set of photographs stacked vertically across a table of length `batchSize` from left to right. So X_img[0,:,:,:] would be the first image, for example.\n\n\nWe also need to reshape/flatten our input data in `X_img` into an input vector: `X_vec`.  \n**Note**: If one component of `shape` is the special value `-1`, the size of that dimension is computed so that the total size remains constant. In particular, a shape of `[-1]` flattens into `1-D`. At most one component of `shape` can be `-1`.\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis is a tensor, where we can image a set of photographs stacked vertically across a table of length \u003ccode\u003ebatchSize\u003c/code\u003e from left to right. So X_img[0,:,:,:] would be the first image, for example.\u003c/p\u003e\n\u003cp\u003eWe also need to reshape/flatten our input data in \u003ccode\u003eX_img\u003c/code\u003e into an input vector: \u003ccode\u003eX_vec\u003c/code\u003e.\u003cbr/\u003e\u003cstrong\u003eNote\u003c/strong\u003e: If one component of \u003ccode\u003eshape\u003c/code\u003e is the special value \u003ccode\u003e-1\u003c/code\u003e, the size of that dimension is computed so that the total size remains constant. In particular, a shape of \u003ccode\u003e[-1]\u003c/code\u003e flattens into \u003ccode\u003e1-D\u003c/code\u003e. At most one component of \u003ccode\u003eshape\u003c/code\u003e can be \u003ccode\u003e-1\u003c/code\u003e.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056731999_1812677178",
+      "id": "20180417-225856_1413376710",
+      "dateCreated": "Apr 18, 2018 1:05:31 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nX_vec \u003d tf.reshape(X_img, [-1, 784], name\u003d\"X_vec\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-225944_1934473863",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n`X_vec` has the following shape:\n\n![](https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/x_vec.png)\n\nwhere we see that each image in our batch has been flattened into a row of length: \\\\(28*28*1 \u003d 784\\\\) and stacked.\n\nNow we define our weights and biases:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003ccode\u003eX_vec\u003c/code\u003e has the following shape:\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/x_vec.png\" /\u003e\u003c/p\u003e\n\u003cp\u003ewhere we see that each image in our batch has been flattened into a row of length: \\(28*28*1 \u003d 784\\) and stacked.\u003c/p\u003e\n\u003cp\u003eNow we define our weights and biases:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-230032_555949121",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\n# Weights\nW \u003d tf.Variable(tf.zeros([flatSize, numberOfClasses]), name\u003d\"Weights\")\n\n# Biases\nb \u003d tf.Variable(tf.zeros([10]), name\u003d\"Biases\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-230036_303077256",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow, the effect of multiplying `X_vec` which is \\\\(100 \\times 784\\\\) by `W` which is \\\\(784 \\times 10\\\\) is to produce a matrix of size \\\\(100 \\times 10\\\\), which we can think of as each image in our batch\u0027s projection onto the space of digits - i.e - how much of this image belongs to this class? \n\n**Note**: These weights/biases are what we will tune to make this question precise.\n\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow, the effect of multiplying \u003ccode\u003eX_vec\u003c/code\u003e which is \\(100 \\times 784\\) by \u003ccode\u003eW\u003c/code\u003e which is \\(784 \\times 10\\) is to produce a matrix of size \\(100 \\times 10\\), which we can think of as each image in our batch\u0026rsquo;s projection onto the space of digits - i.e - how much of this image belongs to this class? \u003c/p\u003e\n\u003cp\u003e\u003cstrong\u003eNote\u003c/strong\u003e: These weights/biases are what we will tune to make this question precise.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-230201_1204020375",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow we initialize all our variables:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we initialize all our variables:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-230248_1112194170",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ninit \u003d tf.global_variables_initializer()\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732000_1798441469",
+      "id": "20180417-230331_1561842843",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow we can specify our activation model:\n\n![](https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/output.png)\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we can specify our activation model:\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/output.png\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230346_1518091063",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:23 PM",
+      "dateFinished": "Apr 18, 2018 1:57:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nY_Pred_Prob \u003d tf.nn.softmax(tf.matmul(X_vec, W) + b, name\u003d\"softmax\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:23 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230359_1195260532",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nAnd define a placeholder for the correct labels we will use later on:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eAnd define a placeholder for the correct labels we will use later on:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230429_2141579893",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nY_True_Prob \u003d tf.placeholder(tf.float32, [None, 10], name\u003d\"Y_True\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230432_1201565447",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nThis is of size `batchSize x 10` where `batchsize` is the number of images we have in the current batch. \n\nNote: I\u0027ve called it `Y_True_Prob` to be in line with `Y_Pred_Prob`, but this will be a vectors of all \\\\(0\\\\)\u0027s except a single \\\\(1\\\\) at the true class label. This is still consistent with it being considered a \"true probability\".\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eThis is of size \u003ccode\u003ebatchSize x 10\u003c/code\u003e where \u003ccode\u003ebatchsize\u003c/code\u003e is the number of images we have in the current batch. \u003c/p\u003e\n\u003cp\u003eNote: I\u0026rsquo;ve called it \u003ccode\u003eY_True_Prob\u003c/code\u003e to be in line with \u003ccode\u003eY_Pred_Prob\u003c/code\u003e, but this will be a vectors of all \\(0\\)\u0026rsquo;s except a single \\(1\\) at the true class label. This is still consistent with it being considered a \u0026ldquo;true probability\u0026rdquo;.\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230442_251994101",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nTo measure our loss, we will use the cross-entropy loss:\n\n![](https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/cross_entropy_loss.png)",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eTo measure our loss, we will use the cross-entropy loss:\u003c/p\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/diego898/deep-learning-without-phd-notes/master/images/cross_entropy_loss.png\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230510_1914699845",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ncross_entropy_loss \u003d -tf.reduce_sum(Y_True_Prob * tf.log(Y_Pred_Prob), name\u003d\"Loss_Cross_Entropy\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732001_1798056720",
+      "id": "20180417-230543_2016986326",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow we go ahead and compute the actual predictions by just selecting the class with the highest probability:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we go ahead and compute the actual predictions by just selecting the class with the highest probability:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732002_1799210967",
+      "id": "20180417-230557_737621275",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nY_Pred_Class \u003d tf.argmax(Y_Pred_Prob,1, name\u003d\"Y_Pred_Class\")\nY_True_Class \u003d tf.argmax(Y_True_Prob,1, name\u003d\"Y_True_Class\")   # there is only 1 non-zero index\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732002_1799210967",
+      "id": "20180417-230617_668885955",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nUsing this, we can compute some accuracy metrics:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eUsing this, we can compute some accuracy metrics:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732002_1799210967",
+      "id": "20180417-230627_1616528499",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:24 PM",
+      "dateFinished": "Apr 18, 2018 1:57:24 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nis_correct \u003d tf.equal(Y_Pred_Class, Y_True_Class, name\u003d\"calcCorrect\")\n\naccuracy \u003d tf.reduce_mean(tf.cast(is_correct, tf.float32), name\u003d\"calcAccuracy\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:24 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732003_1798826218",
+      "id": "20180417-230642_114656661",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n# Training\n\nNow we get to the training! Lets setup the optimizer and give it the loss function we\u0027ve defined:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch1\u003eTraining\u003c/h1\u003e\n\u003cp\u003eNow we get to the training! Lets setup the optimizer and give it the loss function we\u0026rsquo;ve defined:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732003_1798826218",
+      "id": "20180417-230652_398401929",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nalpha \u003d 0.003                          # our learning rate\n\noptimizer \u003d tf.train.GradientDescentOptimizer(alpha, name\u003d\"optimizer\")\n\ntrainStep \u003d optimizer.minimize(cross_entropy_loss, name\u003d\"trainStep\")\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732003_1798826218",
+      "id": "20180417-230805_1043783249",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nLets dump the graph out for visualization:\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eLets dump the graph out for visualization:\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732003_1798826218",
+      "id": "20180417-230733_333936041",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ngraph_def \u003d tf.get_default_graph().as_graph_def()\nwith open(\u0027mygraph.pbtxt\u0027,\u0027w\u0027) as f: f.write(str(graph_def))",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "660711\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732003_1798826218",
+      "id": "20180417-230746_1038573515",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\nNow we can actually **run** our computation graph in our tensorflow session through batches \n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003eNow we can actually \u003cstrong\u003erun\u003c/strong\u003e our computation graph in our tensorflow session through batches\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732004_1796902473",
+      "id": "20180417-230820_1948118173",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nnumberOfBatches \u003d 10000\nbatchSize \u003d 100\n\ntrainingAccuracyList \u003d []\ntrainingLossList \u003d []\ntestAccuracyList \u003d []\ntestLossList \u003d []\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732004_1796902473",
+      "id": "20180417-230834_1632840904",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nwith tf.Session() as sess:\n\n    summary_writer \u003d tf.summary.FileWriter(\u0027/tensorflow/mnist1.0/logdir\u0027, sess.graph)\n    \n    # actually initialize our variables\n    sess.run(init)\n    \n    # batch-minimization loop\n    for i in range(numberOfBatches):\n        # get this batches data\n        batch_X, batch_Y \u003d mnist.train.next_batch(batchSize)\n        \n        # setup this batches input dictionary\n        train_data \u003d {X_img: batch_X, Y_True_Prob: batch_Y}\n        \n        # run the training step on this batch\n        sess.run(trainStep, feed_dict\u003dtrain_data)\n        \n\n        # compute this batches success on the training data\n        trainAcc,trainLoss \u003d sess.run([accuracy, cross_entropy_loss], feed_dict\u003dtrain_data)\n\n        if i%100 \u003d\u003d 0:\n            # compute our success on the test data\n            test_data \u003d {X_img: mnist.test.images, Y_True_Prob: mnist.test.labels}\n            testAcc,testLoss \u003d sess.run([accuracy, cross_entropy_loss], feed_dict\u003dtest_data)\n            # print(\"Train \" + str(i) + \": accuracy:\" + str(trainAcc) + \" loss: \" + str(trainLoss))\n            # print(\"Test \" + str(i) + \": accuracy:\" + str(testAcc) + \" loss: \" + str(testLoss))\n            \n            trainingAccuracyList.append(trainAcc)\n            trainingLossList.append(trainLoss)\n            testAccuracyList.append(testAcc)\n            testLossList.append(testLoss)",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732004_1796902473",
+      "id": "20180417-230846_1557222798",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:58:09 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%md\n## Plotting\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003ch2\u003ePlotting\u003c/h2\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732004_1796902473",
+      "id": "20180417-235226_107561573",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:57:25 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nplt.figure(figsize\u003d(10,5))\n\n# Plot Accuracy\nplt.subplot(1,2,1);\nplt.plot(trainingAccuracyList, label\u003d\"Train Acc\");\nplt.plot(testAccuracyList, label\u003d\"Test Acc\");\nplt.title(\"Accuracy\");\nplt.legend();\n\n# Plot Loss\nplt.subplot(1,2,2);\nplt.plot(trainingLossList, label\u003d\"Train Loss\");\nplt.plot(testLossList, label\u003d\"Test Loss\");\nplt.title(\"Loss\");\nplt.legend();\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "\u003cmatplotlib.legend.Legend object at 0x7fc7042d9358\u003e\n"
+          },
+          {
+            "type": "HTML",
+            "data": "\u003cdiv style\u003d\u0027width:auto;height:auto\u0027\u003e\u003cimg src\u003ddata:image/png;base64,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2NhITU3NgNc82HT8Gjg6fg0OrxzDdPwaGArQLhKJRCgsLEzcDofDRCKRQayo9/bu3csbb7zBhAkTqK2tpaCgAID8/Hxqa2sHubqj3XPPPdx8882YZvyvQF1dHVlZWfj9fgAKCwtdue/37t1LXl4eK1asYN68edx+++20tra6fp+Hw2G+8Y1v8PnPf57JkyeTkZHB2LFjPbHPuxxrHx/599btr+NE0fFr4Oj4NfC8fgzT8av/KUDLv6ylpYVly5Zx2223kZGR0e0+wzAwDGOQKuvZH/7wB/Ly8hg3btxgl9JnsViMv//971x++eVs2rSJ1NTUo77udOM+b2hooKysjLKyMnbt2kVbWxu7du0a7LI+MTfuY/lkdPwaOF49fkFyHcPcuo+9xj/YBcgh4XCY6urqxO1IJEI4HB7Eij5eZ2cny5YtY86cOVx88cUADBkyhJqaGgoKCqipqSEvL2+Qq+zu5ZdfZseOHZSXl9PR0UFzczOrVq2isbGRWCyG3++nurralfu+sLCQwsJCJkyYAMAXv/hF1q9f7/p9/uc//5lTTz01UdfFF1/Myy+/7Il93uVY+/jIv7dufx0nio5fA0PHr8Hh9WOYjl/9TyPQLjJ+/HgqKyupqqoiGo1SWlpKcXHxYJd1TI7jcPvttzNy5EgWLVqUWF5cXMymTZsA2LRpE9OmTRusEnt00003UV5ezo4dO3jwwQe54IILeOCBBzj//PPZunVQzFtKAAACF0lEQVQrAM8884wr931+fj6FhYW8++67ADz//POceeaZrt/nw4YN429/+xttbW04jsPzzz/PqFGjPLHPuxxrH3ctdxyHV199lczMzMRXpScTHb8Gho5fg8PrxzAdv/qf4TiOM9hFyCE7d+7knnvuwbIs5s+fz9KlSwe7pGN66aWX+OpXv8pZZ52V6MVbvnw55557LjfccAMfffQRw4YNY82aNeTk5AxytT174YUX+OlPf8rDDz9MVVUVN954Iw0NDZxzzjncf//9BIPBwS7xKG+88Qa33347nZ2dFBUVce+992Lbtuv3+Q9/+EOeffZZ/H4/55xzDqtWrSISibhyny9fvpzdu3dTV1fHkCFDuO666/jCF77Q4z52HIeSkhJ27dpFamoq99xzD+PHjx/slzAodPwaWDp+DSyvHMN0/BoYCtAiIiIiIn2gFg4RERERkT5QgBYRERER6QMFaBERERGRPlCAFhERERHpAwVoEREREZE+UIAWEREREekDBWgRERERkT5QgBYRERER6QMFaBERERGRPlCAFhERERHpAwVoEREREZE+UIAWEREREekDBWgRERERkT5QgBYRERER6QMFaBERERGRPlCAFhERERHpAwVoEREREZE+UIAWEREREekDBWgRERERkT5QgBYRERER6QMFaBERERGRPlCAFhERERHpAwVoEREREZE+UIAWEREREemD/x8M4RxYUORTVwAAAABJRU5ErkJggg\u003d\u003d style\u003d\u0027width\u003dauto;height:auto\u0027\u003e\u003cdiv\u003e\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732004_1796902473",
+      "id": "20180417-230857_1521492729",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:25 PM",
+      "dateFinished": "Apr 18, 2018 1:58:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\nresultsDic \u003d {\"trainAcc\": trainingAccuracyList, \"trainLoss\": trainingLossList, \"testAcc\": testAccuracyList, \"testLoss\": testLossList}\n\nwith open(\"mnist-2.0-results.txt\", \"wb\") as fp:   #Pickling\n    pickle.dump(resultsDic, fp)",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732005_1796517724",
+      "id": "20180417-235950_1557499164",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:58:09 PM",
+      "dateFinished": "Apr 18, 2018 1:58:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%python\ntestAccuracyList",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/python",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[0.4032, 0.8853, 0.9019, 0.9037, 0.9091, 0.9115, 0.9127, 0.9132, 0.9172, 0.9149, 0.9181, 0.9184, 0.9188, 0.9197, 0.9172, 0.9187, 0.9188, 0.9195, 0.9202, 0.9212, 0.9187, 0.9202, 0.9209, 0.9205, 0.9218, 0.9202, 0.921, 0.9191, 0.9225, 0.921, 0.9219, 0.9234, 0.9223, 0.9186, 0.9222, 0.9229, 0.9223, 0.9228, 0.9203, 0.9247, 0.9231, 0.9201, 0.9202, 0.9228, 0.9239, 0.9213, 0.9213, 0.9228, 0.9239, 0.92, 0.9216, 0.9215, 0.9223, 0.9219, 0.9228, 0.9212, 0.9218, 0.9235, 0.9232, 0.9228, 0.9231, 0.9233, 0.9246, 0.9236, 0.9244, 0.9241, 0.9212, 0.9225, 0.9244, 0.9241, 0.9221, 0.9249, 0.9216, 0.9214, 0.9233, 0.925, 0.926, 0.9228, 0.9224, 0.9246, 0.9242, 0.9244, 0.9246, 0.9221, 0.9206, 0.9251, 0.9232, 0.9246, 0.9221, 0.9241, 0.9243, 0.9237, 0.9234, 0.925, 0.9241, 0.9245, 0.9242, 0.9257, 0.9243, 0.9252]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732005_1796517724",
+      "id": "20180418-000148_597544676",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:58:16 PM",
+      "dateFinished": "Apr 18, 2018 1:58:16 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%sh\n#tensorboard --logdir\u003d/tensorflow/mnist1.0/logdir\n",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:25 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sh",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "sh",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732005_1796517724",
+      "id": "20180417-232656_1913290822",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "dateStarted": "Apr 18, 2018 1:57:26 PM",
+      "dateFinished": "Apr 18, 2018 1:57:26 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "",
+      "user": "anonymous",
+      "dateUpdated": "Apr 18, 2018 1:57:26 PM",
+      "config": {
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "results": {},
+        "enabled": true,
+        "editorSetting": {
+          "language": "scala",
+          "editOnDblClick": false
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1524056732006_1797671971",
+      "id": "20180417-230919_1437998674",
+      "dateCreated": "Apr 18, 2018 1:05:32 PM",
+      "status": "FINISHED",
+      "errorMessage": "",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "6. MNIST 1.0 (TensorFlow)",
+  "id": "2DCD9K217",
+  "angularObjects": {
+    "2DCH5NE18:shared_process": [],
+    "2DDUY1CP1:shared_process": [],
+    "2DBBE2K4K:shared_process": [],
+    "2DDR1CC6Q:shared_process": [],
+    "2DASJS5DN:shared_process": [],
+    "2DE1ZQCFB:shared_process": [],
+    "2DDNXUQG4:shared_process": [],
+    "2DCN5KT6R:shared_process": [],
+    "2DDTBF2CG:shared_process": [],
+    "2DE2DP1DT:shared_process": [],
+    "2DAJ8J9YW:shared_process": [],
+    "2DBD18PNB:shared_process": [],
+    "2DD3CD9SC:shared_process": [],
+    "2DBWM4JYG:shared_process": [],
+    "2DASXR4B2:shared_process": [],
+    "2DAW1GDN1:shared_process": [],
+    "2DC2T9PZP:shared_process": [],
+    "2DCFA21BA:shared_process": [],
+    "2DDBAAYEJ:shared_process": [],
+    "2DBGYQD2G:shared_process": []
+  },
+  "config": {},
+  "info": {}
+}
