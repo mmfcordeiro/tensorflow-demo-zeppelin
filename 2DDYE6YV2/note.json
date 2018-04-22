@@ -327,6 +327,44 @@
       "progressUpdateIntervalMs": 500
     },
     {
+      "text": "%md\n![](https://raw.githubusercontent.com/Hvass-Labs/TensorFlow-Tutorials/master/images/08_transfer_learning_flowchart.png)",
+      "user": "anonymous",
+      "dateUpdated": "Apr 22, 2018 5:37:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "\u003cdiv class\u003d\"markdown-body\"\u003e\n\u003cp\u003e\u003cimg src\u003d\"https://raw.githubusercontent.com/Hvass-Labs/TensorFlow-Tutorials/master/images/08_transfer_learning_flowchart.png\" /\u003e\u003c/p\u003e\n\u003c/div\u003e"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1524418494594_-661953771",
+      "id": "20180422-173454_662876687",
+      "dateCreated": "Apr 22, 2018 5:34:54 PM",
+      "dateStarted": "Apr 22, 2018 5:37:12 PM",
+      "dateFinished": "Apr 22, 2018 5:37:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
       "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\npython -m scripts.retrain \\\n  --bottleneck_dir\u003dtf_files/bottlenecks \\\n  --how_many_training_steps\u003d500 \\\n  --model_dir\u003dtf_files/models/ \\\n  --summaries_dir\u003dtf_files/training_summaries/mobilenet_0.50_224 \\\n  --output_graph\u003dtf_files/retrained_graph.pb \\\n  --output_labels\u003dtf_files/retrained_labels.txt \\\n  --architecture\u003d\"mobilenet_0.50_224\" \\\n  --image_dir\u003dtf_files/flower_photos\n\n",
       "dateUpdated": "Apr 18, 2018 1:16:54 PM",
       "config": {
