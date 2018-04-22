@@ -109,18 +109,18 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sh\nwget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/imagenet/classify_image.py -P /notebook/tensorflow-for-poets-2/scripts/\n\nmkdir /notebook/tensorflow-for-poets-2/webimages\n",
+      "text": "%sh\nmkdir /notebook/tensorflow-for-poets-2\n\ngit clone https://github.com/googlecodelabs/tensorflow-for-poets-2 /notebook/tensorflow-for-poets-2\n\nwget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/imagenet/classify_image.py -P /notebook/tensorflow-for-poets-2/scripts/\n\nmkdir /notebook/tensorflow-for-poets-2/webimages\n",
       "user": "anonymous",
-      "dateUpdated": "Apr 18, 2018 2:01:30 PM",
+      "dateUpdated": "Apr 22, 2018 5:27:20 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
         "results": {},
         "editorSetting": {
-          "language": "sh",
+          "language": "text",
           "editOnDblClick": false
         },
-        "editorMode": "ace/mode/sh"
+        "editorMode": "ace/mode/text"
       },
       "settings": {
         "params": {},
@@ -131,7 +131,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Connecting to raw.githubusercontent.com (151.101.12.133:443)\nclassify_image.py    100% |*******************************|  7744   0:00:00 ETA\n\n"
+            "data": "mkdir: can\u0027t create directory \u0027/notebook/tensorflow-for-poets-2\u0027: File exists\nfatal: destination path \u0027/notebook/tensorflow-for-poets-2\u0027 already exists and is not an empty directory.\nConnecting to raw.githubusercontent.com (151.101.12.133:443)\nclassify_image.py    100% |*******************************|  7744   0:00:00 ETA\n\n"
           }
         ]
       },
@@ -139,8 +139,8 @@
       "jobName": "paragraph_1524059900150_902389458",
       "id": "20180418-135820_934771734",
       "dateCreated": "Apr 18, 2018 1:58:20 PM",
-      "dateStarted": "Apr 18, 2018 2:01:19 PM",
-      "dateFinished": "Apr 18, 2018 2:01:19 PM",
+      "dateStarted": "Apr 22, 2018 5:27:20 PM",
+      "dateFinished": "Apr 22, 2018 5:27:20 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -183,14 +183,14 @@
     {
       "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\nwget http://szzljy.com/images/car/car2.jpg -P /notebook/tensorflow-for-poets-2/webimages/\n\npython /notebook/tensorflow-for-poets-2/scripts/classify_image.py  --image_file /notebook/tensorflow-for-poets-2/webimages/car2.jpg\n",
       "user": "anonymous",
-      "dateUpdated": "Apr 18, 2018 2:02:04 PM",
+      "dateUpdated": "Apr 22, 2018 5:28:33 PM",
       "config": {
         "colWidth": 12.0,
-        "editorMode": "ace/mode/sh",
+        "editorMode": "ace/mode/text",
         "results": {},
         "enabled": true,
         "editorSetting": {
-          "language": "sh",
+          "language": "text",
           "editOnDblClick": false
         }
       },
@@ -205,7 +205,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Connecting to szzljy.com (88.99.219.223:80)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/webimages/car2.jpg\u0027: File exists\n2018-04-18 14:02:16.919522: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-18 14:02:17.450707: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import register_converters as _register_converters\nsports car, sport car (score \u003d 0.51879)\ngrille, radiator grille (score \u003d 0.12472)\ncar wheel (score \u003d 0.11999)\nconvertible (score \u003d 0.04073)\nbeach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon (score \u003d 0.02115)\n"
+            "data": "Connecting to szzljy.com (88.99.219.223:80)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/webimages/car2.jpg\u0027: File exists\n2018-04-22 17:28:39.663214: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-22 17:28:40.254849: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import registsports car, sport car (score e\u003dr _0c.o5n1v8e7r9t)e\ngrille, radiator grille (srcso raes  \u003d_ r0e.g1i24s72t)e\ncar wheel (scorre_ c\u003do n0v.e1r1t9e9r9s)\n\nconvertible (score \u003d 0.04073)\nbeach wagon, station wagon, wagon, estate car, beach waggon, station waggon, waggon (score \u003d 0.02115)\n"
           }
         ]
       },
@@ -213,8 +213,8 @@
       "jobName": "paragraph_1524057414933_979296260",
       "id": "20180418-110000_1265852635",
       "dateCreated": "Apr 18, 2018 1:16:54 PM",
-      "dateStarted": "Apr 18, 2018 2:02:05 PM",
-      "dateFinished": "Apr 18, 2018 2:02:25 PM",
+      "dateStarted": "Apr 22, 2018 5:28:34 PM",
+      "dateFinished": "Apr 22, 2018 5:28:41 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -603,26 +603,26 @@
   "name": "10. Inception Model and Transfer Learning",
   "id": "2DDYE6YV2",
   "angularObjects": {
-    "2DCH5NE18:shared_process": [],
-    "2DDUY1CP1:shared_process": [],
-    "2DBBE2K4K:shared_process": [],
-    "2DDR1CC6Q:shared_process": [],
-    "2DASJS5DN:shared_process": [],
-    "2DE1ZQCFB:shared_process": [],
-    "2DDNXUQG4:shared_process": [],
-    "2DCN5KT6R:shared_process": [],
-    "2DDTBF2CG:shared_process": [],
-    "2DE2DP1DT:shared_process": [],
-    "2DAJ8J9YW:shared_process": [],
-    "2DBD18PNB:shared_process": [],
-    "2DD3CD9SC:shared_process": [],
-    "2DBWM4JYG:shared_process": [],
-    "2DASXR4B2:shared_process": [],
-    "2DAW1GDN1:shared_process": [],
-    "2DC2T9PZP:shared_process": [],
-    "2DCFA21BA:shared_process": [],
-    "2DDBAAYEJ:shared_process": [],
-    "2DBGYQD2G:shared_process": []
+    "2DEETABXG:shared_process": [],
+    "2DBGP3V9F:shared_process": [],
+    "2DCCWMZSD:shared_process": [],
+    "2DDA1CCX1:shared_process": [],
+    "2DBEZZ2WH:shared_process": [],
+    "2DE1ECQF4:shared_process": [],
+    "2DCMBQF92:shared_process": [],
+    "2DD52W46N:shared_process": [],
+    "2DBU8622X:shared_process": [],
+    "2DASZ64DA:shared_process": [],
+    "2DDWEFF7A:shared_process": [],
+    "2DCQCCQEY:shared_process": [],
+    "2DCZN5P4B:shared_process": [],
+    "2DCPDFPXH:shared_process": [],
+    "2DDSBY1TX:shared_process": [],
+    "2DBRE51SF:shared_process": [],
+    "2DEF41WEQ:shared_process": [],
+    "2DAYWBBN9:shared_process": [],
+    "2DCXY9SW6:shared_process": [],
+    "2DECFNKSF:shared_process": []
   },
   "config": {},
   "info": {}
