@@ -109,9 +109,9 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "%sh\nmkdir /notebook/tensorflow-for-poets-2\n\ngit clone https://github.com/googlecodelabs/tensorflow-for-poets-2 /notebook/tensorflow-for-poets-2\n\nwget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/imagenet/classify_image.py -P /notebook/tensorflow-for-poets-2/scripts/\n\nmkdir /notebook/tensorflow-for-poets-2/webimages\n",
+      "text": "%sh\nmkdir /notebook/tensorflow-for-poets-2\n\ngit clone https://github.com/googlecodelabs/tensorflow-for-poets-2 /notebook/tensorflow-for-poets-2\n\nwget https://raw.githubusercontent.com/tensorflow/models/master/tutorials/image/imagenet/classify_image.py -P /notebook/tensorflow-for-poets-2/scripts/\n\nmkdir /notebook/tensorflow-for-poets-2/webimages\n\ncd /notebook/tensorflow-for-poets-2\n\ncurl http://download.tensorflow.org/example_images/flower_photos.tgz | tar xz -C tf_files\n",
       "user": "anonymous",
-      "dateUpdated": "Apr 22, 2018 5:27:20 PM",
+      "dateUpdated": "Apr 22, 2018 5:32:48 PM",
       "config": {
         "colWidth": 12.0,
         "enabled": true,
@@ -131,7 +131,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "mkdir: can\u0027t create directory \u0027/notebook/tensorflow-for-poets-2\u0027: File exists\nfatal: destination path \u0027/notebook/tensorflow-for-poets-2\u0027 already exists and is not an empty directory.\nConnecting to raw.githubusercontent.com (151.101.12.133:443)\nclassify_image.py    100% |*******************************|  7744   0:00:00 ETA\n\n"
+            "data": "mkdir: can\u0027t create directory \u0027/notebook/tensorflow-for-poets-2\u0027: File exists\nfatal: destination path \u0027/notebook/tensorflow-for-poets-2\u0027 already exists and is not an empty directory.\nConnecting to raw.githubusercontent.com (151.101.12.133:443)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/scripts/classify_image.py\u0027: File exists\nmkdir: can\u0027t create directory \u0027/notebook/tensorflow-for-poets-2/webimages\u0027: File exists\n  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current\n                                 Dload  Upload   Total   Spent    Left  Speed\n\r  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0\r  0  218M    0  3545    0     0   3883      0 16:22:07 --:--:-- 16:22:07  3969\r  5  218M    5 11.5M    0     0  6189k      0  0:00:36  0:00:01  0:00:35 6253k\r  9  218M    9 19.6M    0     0  6928k      0  0:00:32  0:00:02  0:00:30 6975k\r 14  218M   14 31.5M    0     0  8266k      0  0:00:27  0:00:03  0:00:24 8308k\r 19  218M   19 43.4M    0     0  9057k      0  0:00:24  0:00:04  0:00:20 9093k\r 25  218M   25 55.3M    0     0  9582k      0  0:00:23  0:00:05  0:00:18 11.0M\r 30  218M   30 67.1M    0     0  9955k      0  0:00:22  0:00:06  0:00:16 11.1M\r 36  218M   36 79.0M    0     0   9.9M      0  0:00:21  0:00:07  0:00:14 11.8M\r 41  218M   41 90.9M    0     0  10.2M      0  0:00:21  0:00:08  0:00:13 11.8M\r 47  218M   47  102M    0     0  10.3M      0  0:00:21  0:00:09  0:00:12 11.8M\r 52  218M   52  114M    0     0  10.5M      0  0:00:20  0:00:10  0:00:10 11.8M\r 56  218M   56  123M    0     0  10.4M      0  0:00:20  0:00:11  0:00:09 11.3M\r 62  218M   62  135M    0     0  10.5M      0  0:00:20  0:00:12  0:00:08 11.3M\r 67  218M   67  147M    0     0  10.6M      0  0:00:20  0:00:13  0:00:07 11.3M\r 73  218M   73  159M    0     0  10.7M      0  0:00:20  0:00:14  0:00:06 11.3M\r 78  218M   78  171M    0     0  10.7M      0  0:00:20  0:00:15  0:00:05 11.3M\r 84  218M   84  183M    0     0  10.8M      0  0:00:20  0:00:16  0:00:04 11.8M\r 89  218M   89  195M    0     0  10.8M      0  0:00:20  0:00:17  0:00:03 11.8M\r 94  218M   94  206M    0     0  10.9M      0  0:00:19  0:00:18  0:00:01 11.8M\r100  218M  100  218M    0     0  10.9M      0  0:00:19  0:00:19 --:--:-- 11.8M\n"
           }
         ]
       },
@@ -139,8 +139,8 @@
       "jobName": "paragraph_1524059900150_902389458",
       "id": "20180418-135820_934771734",
       "dateCreated": "Apr 18, 2018 1:58:20 PM",
-      "dateStarted": "Apr 22, 2018 5:27:20 PM",
-      "dateFinished": "Apr 22, 2018 5:27:20 PM",
+      "dateStarted": "Apr 22, 2018 5:32:48 PM",
+      "dateFinished": "Apr 22, 2018 5:33:08 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -257,14 +257,14 @@
     {
       "text": "%sh\ncd /notebook/tensorflow-for-poets-2\n\nwget http://www.vitoriasc.pt/public/images/sys_images/1271442932596.jpg -P /notebook/tensorflow-for-poets-2/webimages/\n\npython /notebook/tensorflow-for-poets-2/scripts/classify_image.py  --image_file /notebook/tensorflow-for-poets-2/webimages/1271442932596.jpg\n",
       "user": "anonymous",
-      "dateUpdated": "Apr 18, 2018 5:36:21 PM",
+      "dateUpdated": "Apr 22, 2018 5:32:00 PM",
       "config": {
         "colWidth": 12.0,
-        "editorMode": "ace/mode/sh",
+        "editorMode": "ace/mode/text",
         "results": {},
         "enabled": true,
         "editorSetting": {
-          "language": "sh",
+          "language": "text",
           "editOnDblClick": false
         }
       },
@@ -277,7 +277,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "Connecting to www.vitoriasc.pt (37.187.139.72:80)\nwget: can\u0027t open \u0027/notebook/tensorflow-for-poets-2/webimages/1271442932596.jpg\u0027: File exists\n2018-04-18 17:36:27.933696: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-18 17:36:28.698962: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\ndam, dike, dyke (score \u003d 0.16474)\nbobsled, bobsleigh, bob (score \u003d 0.10890)\nradio telescope, radio reflector (score \u003d 0.05140)\nmaze, labyrinth (score \u003d 0.02783)\nplanetarium (score \u003d 0.02535)\n  from ._conv import register_converters as _register_converters\n"
+            "data": "Connecting to www.vitoriasc.pt (37.187.139.72:80)\n1271442932596.jpg    100% |*******************************|  1131k  0:00:00 ETA\n\n2018-04-22 17:31:12.862146: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA\n2018-04-22 17:31:13.465609: W tensorflow/core/framework/op_def_util.cc:343] Op BatchNormWithGlobalNormalization is deprecated. It will cease to work in GraphDef version 9. Use tf.nn.batch_normalization().\n/opt/anaconda/lib/python3.5/site-packages/h5py/__init__.py:36: FutureWarning: Conversion of the second argument of issubdtype from `float` to `np.floating` is deprecated. In future, it will be treated as `np.float64 \u003d\u003d np.dtype(float).type`.\n  from ._conv import regisdam, dike, dyke (score t\u003de r0_.c1o6n4v7e4r)t\nbobsled, bobsleigh, bob (score \u003d 0.10890)e\nradio telescope, radio rerfsl ectaosr  (scor_er \u003de 0.05140)\nmaze, labyrinth (score \u003d 0.02783)g\nplanetarium (score \u003di s0t.e0253r_5c)\nonverters\n"
           }
         ]
       },
@@ -285,8 +285,8 @@
       "jobName": "paragraph_1524057414933_979296260",
       "id": "20180418-110908_1590731246",
       "dateCreated": "Apr 18, 2018 1:16:54 PM",
-      "dateStarted": "Apr 18, 2018 5:36:21 PM",
-      "dateFinished": "Apr 18, 2018 5:36:30 PM",
+      "dateStarted": "Apr 22, 2018 5:31:07 PM",
+      "dateFinished": "Apr 22, 2018 5:31:21 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
